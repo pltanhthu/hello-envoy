@@ -1,0 +1,17 @@
+FROM envoyproxy/envoy-alpine:latest
+
+RUN apk update && apk add python3 bash
+RUN python3 --version && pip3 --version
+RUN pip3 install -q Flask==0.11.1 requests==2.18.4
+RUN mkdir /code
+ADD ./service.py /code
+#CMD python3 /code/service.py & envoy -c /etc/service-envoy.yaml --service-cluster service${SERVICE_NAME}
+
+
+ADD ./start_service.sh /usr/local/bin/start_service.sh
+RUN chmod u+x /usr/local/bin/start_service.sh
+
+#ADD ./install-jaeger-plugin.sh /usr/local/bin/install-jaeger-plugin.sh
+#RUN chmod u+x /usr/local/bin/install-jaeger-plugin.sh
+#CMD /install-jaeger-plugin.sh && python3 /code/service.py & envoy -c /etc/service-envoy-jaeger.yaml --service-cluster service${SERVICE_NAME}
+ENTRYPOINT /usr/local/bin/start_service.sh
