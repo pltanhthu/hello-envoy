@@ -43,7 +43,7 @@ tracing:
     config:
       library: /usr/local/lib/libjaegertracing_plugin.so
       config:
-        service_name: service${SERVICE_NAME}
+        service_name: service2
         sampler:
           type: const
           param: 1

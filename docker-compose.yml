@@ -22,7 +22,7 @@ services:
       context: .
       dockerfile: Dockerfile-service
     volumes:
-      - ./service-envoy-jaeger.yaml:/etc/service-envoy.yaml
+      - ./service-envoy-jaeger-1.yaml:/etc/service-envoy.yaml
       - ./install-jaeger-plugin.sh:/install-jaeger-plugin.sh
       - ./start-service.sh:/start-service.sh
     entrypoint: /start-service.sh
@@ -40,7 +40,7 @@ services:
       context: .
       dockerfile: Dockerfile-service
     volumes:
-      - ./service-envoy-jaeger.yaml:/etc/service-envoy.yaml
+      - ./service-envoy-jaeger-2.yaml:/etc/service-envoy.yaml
       - ./install-jaeger-plugin.sh:/install-jaeger-plugin.sh
       - ./start-service.sh:/start-service.sh
     entrypoint: /start-service.sh
